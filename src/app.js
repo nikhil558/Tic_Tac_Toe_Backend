@@ -10,7 +10,7 @@ app.use(
     origin:
       process.env.NODE_ENV === "development"
         ? "http://localhost:5173"
-        : "http://tic-tac-toe-web-gilt.vercel.app/",
+        : "https://tic-tac-toe-web-gilt.vercel.app/",
     credentials: true,
   })
 );
@@ -30,10 +30,7 @@ app.use("/", historyRouter);
 
 connectSocket(server);
 
-const PORT =
-  process.env.NODE_ENV === "development"
-    ? process.env.DEV_PORT || 5000
-    : process.env.PORT || 5000;
+const PORT = process.env.PORT || 7777;
 
 connectionDb()
   .then(() => {

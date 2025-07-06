@@ -14,7 +14,7 @@ const connectSocket = (server) => {
       origin:
         process.env.NODE_ENV === "development"
           ? "http://localhost:5173"
-          : "http://tic-tac-toe-web-gilt.vercel.app/",
+          : "https://tic-tac-toe-web-gilt.vercel.app/",
     },
   });
 
