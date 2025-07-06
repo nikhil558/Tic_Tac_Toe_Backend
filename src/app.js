@@ -32,12 +32,13 @@ app.use("/", historyRouter);
 
 connectSocket(server);
 
+server.listen(PORT, () => {
+  console.log("Server is running on port", PORT);
+});
+
 connectionDb()
   .then(() => {
     console.log("Database connected successfully");
-    server.listen(PORT, () => {
-      console.log("Server is running on port", PORT);
-    });
   })
   .catch((err) => {
     console.log("Something went wrong while connecting to the database", err);
