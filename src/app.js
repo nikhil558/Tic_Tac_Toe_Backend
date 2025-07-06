@@ -7,7 +7,10 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:5173"
+        : "http://tic-tac-toe-web-gilt.vercel.app/",
     credentials: true,
   })
 );
