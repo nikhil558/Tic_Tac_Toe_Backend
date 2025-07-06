@@ -30,7 +30,8 @@ app.use("/", historyRouter);
 
 connectSocket(server);
 
-const PORT = process.env.PORT || 7777;
+const isDev = process.env.NODE_ENV === "development";
+const PORT = isDev ? process.env.DEV_PORT || 5000 : process.env.PORT;
 
 connectionDb()
   .then(() => {
