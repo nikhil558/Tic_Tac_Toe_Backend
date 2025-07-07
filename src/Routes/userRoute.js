@@ -24,6 +24,9 @@ userRouter.post("/signup", async (req, res) => {
     const data = await newUser.save();
     const token = await newUser.getJWT(); // Generate JWT token
     res.cookie("Tic-Tac-Toe", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== "development", // 🔑 HTTPS only in prod
+      sameSite: process.env.NODE_ENV !== "development" ? "None" : "Lax",
       expires: new Date(Date.now() + 24 * 3600000), // Set cookie expiration to 1 day
     });
 
@@ -48,6 +51,9 @@ userRouter.post("/signin", async (req, res) => {
     }
     const token = await user.getJWT();
     res.cookie("Tic-Tac-Toe", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== "development", // 🔑 HTTPS only in prod
+      sameSite: process.env.NODE_ENV !== "development" ? "None" : "Lax",
       expires: new Date(Date.now() + 24 * 3600000),
     });
     res
